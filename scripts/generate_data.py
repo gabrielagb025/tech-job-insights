@@ -52,3 +52,32 @@ TECH_FACTOR = {
 
 EXTRA_SKILLS = ["SQL", "Docker", "AWS", "PostgreSQL", "Git", "MongoDB", "GraphQL", "Jest"]
 WORK_MODES = ["Remote", "Hybrid", "On-site"]
+
+
+def generate_job():
+    """Create one fake job offer as a dictionary."""
+    technology = random.choice(list(ROLES.keys()))
+    level = random.choices(list(LEVELS.keys()), weights=[35, 40, 25])[0]
+    country = random.choice(list(COUNTRIES.keys()))
+    work_mode = random.choices(WORK_MODES, weights=[45, 35, 20])[0]
+
+    salary = (
+        LEVELS[level]
+        * COUNTRIES[country]
+        * TECH_FACTOR[technology]
+        * random.uniform(0.85, 1.15)
+    )
+    salary = max(30000, int(round(salary, -3)))  # round to the nearest 1000, minimum 30k
+
+    stack = [technology] + random.sample(EXTRA_SKILLS, k=random.randint(2, 3))
+
+    return {
+        "Job Title": f"{level} {random.choice(ROLES[technology])}",
+        "Company": random.choice(COMPANIES),
+        "Country": country,
+        "Salary (EUR)": salary,
+        "Tech Stack": ", ".join(stack),
+        "Work Mode": work_mode,
+        "Experience Level": level,
+        "Main Technology": technology,
+    }
