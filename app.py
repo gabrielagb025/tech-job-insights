@@ -2,6 +2,7 @@ import streamlit as st
 
 from src.data_loader import load_data
 from src.filters import apply_sidebar_filters
+from src.metrics import show_key_metrics
 
 st.set_page_config(page_title="Tech Job Insights", page_icon="💼", layout="wide")
 
@@ -12,5 +13,8 @@ st.title("Tech Job Insights")
 
 # Sidebar filters
 filtered_df = apply_sidebar_filters(df)
+
+# Key metrics
+show_key_metrics(filtered_df)
 
 st.dataframe(filtered_df)
