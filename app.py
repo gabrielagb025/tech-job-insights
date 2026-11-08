@@ -32,4 +32,4 @@ mode_col.plotly_chart(work_mode_chart(filtered_df))
 
 # Jobs table
 st.subheader("Job offers")
-st.dataframe(filtered_df)
+st.dataframe(filtered_df, hide_index=True)
