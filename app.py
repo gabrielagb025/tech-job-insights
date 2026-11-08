@@ -19,12 +19,16 @@ if filtered_df.empty:
     st.stop()
 
 # Key metrics
+st.subheader("Key metrics")
 show_key_metrics(filtered_df)
 
 # Charts
+st.subheader("Market overview")
 tech_col, salary_col, mode_col = st.columns(3)
 tech_col.plotly_chart(technology_demand_chart(filtered_df))
 salary_col.plotly_chart(salary_by_level_chart(filtered_df))
 mode_col.plotly_chart(work_mode_chart(filtered_df))
 
+# Jobs table
+st.subheader("Job offers")
 st.dataframe(filtered_df)
