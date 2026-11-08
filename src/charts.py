@@ -7,21 +7,24 @@ TEXT_COLOR = "#2F2A26"
 
 def _style(fig):
     """Apply the shared look to a figure: transparent background and dark text."""
-    fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color=TEXT_COLOR)
+    fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color=TEXT_COLOR, title_x=0)
     return fig
 
 
 def technology_demand_chart(df):
-    """Bar chart with the number of job offers per technology."""
+    """Horizontal bar chart with the number of job offers per technology."""
     counts = df["Main Technology"].value_counts().reset_index(name="Offers")
     fig = px.bar(
         counts,
-        x="Main Technology",
-        y="Offers",
-        labels={"Main Technology": "Technology", "Offers": "Number of offers"},
+        x="Offers",
+        y="Main Technology",
+        orientation="h",
+        text_auto=True,
+        labels={"Main Technology": "", "Offers": "Number of offers"},
         title="Most in-demand technologies",
         color_discrete_sequence=[BAR_COLOR],
     )
+    fig.update_yaxes(autorange="reversed")
     return _style(fig)
 
 
@@ -50,5 +53,5 @@ def work_mode_chart(df):
         title="Work mode",
         color_discrete_sequence=DONUT_COLORS,
     )
-    fig.update_traces(textfont_color=TEXT_COLOR)
+    fig.update_traces(textposition="outside", textinfo="percent", textfont_color=TEXT_COLOR)
     return _style(fig)
