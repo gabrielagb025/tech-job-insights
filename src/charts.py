@@ -1,31 +1,54 @@
 import plotly.express as px
 
+BAR_COLOR = "#8C9BD8"
+DONUT_COLORS = ["#8C9BD8", "#BBAEE3", "#DCE2F4"]
+TEXT_COLOR = "#2F2A26"
+
+
+def _style(fig):
+    """Apply the shared look to a figure: transparent background and dark text."""
+    fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color=TEXT_COLOR)
+    return fig
+
 
 def technology_demand_chart(df):
     """Bar chart with the number of job offers per technology."""
     counts = df["Main Technology"].value_counts().reset_index(name="Offers")
-    return px.bar(
+    fig = px.bar(
         counts,
         x="Main Technology",
         y="Offers",
         labels={"Main Technology": "Technology", "Offers": "Number of offers"},
         title="Most in-demand technologies",
+        color_discrete_sequence=[BAR_COLOR],
     )
+    return _style(fig)
 
 
 def salary_by_level_chart(df):
     """Box plot with the salary distribution for each experience level."""
-    return px.box(
+    fig = px.box(
         df,
         x="Experience Level",
         y="Salary (EUR)",
         category_orders={"Experience Level": ["Junior", "Mid", "Senior"]},
         labels={"Experience Level": "Experience level"},
         title="Salary by experience level",
+        color_discrete_sequence=[BAR_COLOR],
     )
+    return _style(fig)
 
 
 def work_mode_chart(df):
     """Donut chart with the share of offers per work mode."""
     counts = df["Work Mode"].value_counts().reset_index(name="Offers")
-    return px.pie(counts, names="Work Mode", values="Offers", hole=0.5, title="Work mode")
+    fig = px.pie(
+        counts,
+        names="Work Mode",
+        values="Offers",
+        hole=0.5,
+        title="Work mode",
+        color_discrete_sequence=DONUT_COLORS,
+    )
+    fig.update_traces(textfont_color=TEXT_COLOR)
+    return _style(fig)
