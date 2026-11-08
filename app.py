@@ -3,6 +3,7 @@ import streamlit as st
 from src.data_loader import load_data
 from src.filters import apply_sidebar_filters
 from src.metrics import show_key_metrics
+from src.charts import technology_demand_chart, salary_by_level_chart, work_mode_chart
 
 st.set_page_config(page_title="Tech Job Insights", page_icon="💼", layout="wide")
 
@@ -19,5 +20,11 @@ if filtered_df.empty:
 
 # Key metrics
 show_key_metrics(filtered_df)
+
+# Charts
+tech_col, salary_col, mode_col = st.columns(3)
+tech_col.plotly_chart(technology_demand_chart(filtered_df))
+salary_col.plotly_chart(salary_by_level_chart(filtered_df))
+mode_col.plotly_chart(work_mode_chart(filtered_df))
 
 st.dataframe(filtered_df)
