@@ -13,7 +13,7 @@ def apply_sidebar_filters(df):
     selections = {}
     for label, column in FILTER_COLUMNS.items():
         options = sorted(df[column].unique())
-        selections[column] = st.sidebar.multiselect(label, options, default=options)
+        selections[column] = st.sidebar.multiselect(label, options, placeholder="All")
 
     min_salary = int(df["Salary (EUR)"].min())
     max_salary = int(df["Salary (EUR)"].max())
@@ -23,6 +23,7 @@ def apply_sidebar_filters(df):
 
     filtered_df = df
     for column, selected in selections.items():
-        filtered_df = filtered_df[filtered_df[column].isin(selected)]
+        if selected: 
+            filtered_df = filtered_df[filtered_df[column].isin(selected)]
 
     return filtered_df[filtered_df["Salary (EUR)"].between(low, high)]
