@@ -11,4 +11,4 @@ def show_key_metrics(df):
     salary_col.metric("Average salary", f"{average_salary:,.0f} €")
 
     remote_share = (df["Work Mode"] == "Remote").mean() * 100
-    remote_col.metric("Remote jobs", f"{remote_share:.0f}%")
+    remote_col.metric("Remote jobs", f"{remote_share:.1f}%")

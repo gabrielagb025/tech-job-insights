@@ -4,7 +4,13 @@ import plotly.express as px
 def technology_demand_chart(df):
     """Bar chart with the number of job offers per technology."""
     counts = df["Main Technology"].value_counts().reset_index(name="Offers")
-    return px.bar(counts, x="Main Technology", y="Offers", title="Most in-demand technologies")
+    return px.bar(
+        counts,
+        x="Main Technology",
+        y="Offers",
+        labels={"Main Technology": "Technology", "Offers": "Number of offers"},
+        title="Most in-demand technologies",
+    )
 
 
 def salary_by_level_chart(df):
@@ -14,6 +20,7 @@ def salary_by_level_chart(df):
         x="Experience Level",
         y="Salary (EUR)",
         category_orders={"Experience Level": ["Junior", "Mid", "Senior"]},
+        labels={"Experience Level": "Experience level"},
         title="Salary by experience level",
     )
 

@@ -10,6 +10,7 @@ st.set_page_config(page_title="Tech Job Insights", page_icon="💼", layout="wid
 df = load_data()
 
 st.title("Tech Job Insights")
+st.caption("All figures reflect the filters selected in the sidebar.")
 
 
 # Sidebar filters
