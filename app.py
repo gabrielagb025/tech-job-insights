@@ -13,6 +13,9 @@ st.title("Tech Job Insights")
 
 # Sidebar filters
 filtered_df = apply_sidebar_filters(df)
+if filtered_df.empty:
+    st.warning("No job offers match the selected filters.")
+    st.stop()
 
 # Key metrics
 show_key_metrics(filtered_df)
