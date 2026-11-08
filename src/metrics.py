@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 def show_key_metrics(df):
     """Show the key metrics of the filtered job offers."""
     total_col, salary_col, remote_col = st.columns(3)
