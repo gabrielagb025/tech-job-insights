@@ -33,6 +33,39 @@ Built with Python, pandas, Plotly and Streamlit.
 - **Plotly**: interactive charts
 
 
+## Run it locally
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/gabrielagb025/tech-job-insights.git
+   cd tech-job-insights
+   ```
+
+2. Create and activate a virtual environment:
+
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+
+   On Windows, activate it with `.venv\Scripts\activate`.
+
+3. Install the dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Start the app:
+
+   ```bash
+   streamlit run app.py
+   ```
+
+To regenerate the sample dataset, run `python scripts/generate_data.py`.
+
+
 ## Roadmap
 
 - [ ] Add a live data source through an external jobs API, with a CSV fallback
