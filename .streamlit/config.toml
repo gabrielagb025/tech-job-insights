@@ -6,3 +6,6 @@ secondaryBackgroundColor = "#F1E9DC"
 textColor = "#2F2A26"
 font = "sans serif"
 baseRadius = "small"
+
+[client]
+toolbarMode = "minimal"
