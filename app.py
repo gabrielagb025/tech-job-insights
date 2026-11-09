@@ -39,7 +39,7 @@ with table_tab:
         hide_index=True,
         column_config={
             "Job Title": st.column_config.TextColumn("Job title"),
-            "Country": st.column_config.TextColumn("Country", width="small"),
+            "Country": st.column_config.TextColumn("Country", width=140),
             "Salary (EUR)": st.column_config.NumberColumn("Salary (€)", width="small"),
             "Work Mode": st.column_config.TextColumn("Mode", width="small"),
             "Experience Level": st.column_config.TextColumn("Level", width="small"),
