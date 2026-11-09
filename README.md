@@ -66,6 +66,29 @@ Built with Python, pandas, Plotly and Streamlit.
 To regenerate the sample dataset, run `python scripts/generate_data.py`.
 
 
+## Project structure
+
+```text
+tech-job-insights/
+├── app.py                  # Streamlit app entry point
+├── requirements.txt        # Python dependencies
+├── .streamlit/
+│   └── config.toml         # Theme configuration
+├── assets/                 # README screenshots
+├── data/
+│   └── jobs.csv            # Synthetic dataset
+├── scripts/
+│   ├── generate_data.py    # Generates the dataset
+│   └── sample_data.py      # Sample values used by the generator
+└── src/
+    ├── data_loader.py      # Loads the CSV
+    ├── filters.py          # Sidebar filters
+    ├── metrics.py          # Key metrics
+    ├── charts.py           # Plotly charts
+    └── table.py            # Jobs table
+```
+
+
 ## Roadmap
 
 - [ ] Add a live data source through an external jobs API, with a CSV fallback
