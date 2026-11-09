@@ -25,6 +25,14 @@ Built with Python, pandas, Plotly and Streamlit.
 - **Responsive layout** that adapts to smaller screens
 
 
+## Tech stack
+
+- **Python**: main language
+- **pandas**: data loading, filtering and calculations
+- **Streamlit**: web app and interactive widgets
+- **Plotly**: interactive charts
+
+
 ## Roadmap
 
 - [ ] Add a live data source through an external jobs API, with a CSV fallback
