@@ -1,13 +1,13 @@
 import plotly.express as px
 
 BAR_COLOR = "#8C9BD8"
-DONUT_COLORS = ["#8C9BD8", "#BBAEE3", "#DCE2F4"]
+DONUT_COLORS = ["#8C9BD8", "#BBAEE3", "#A8D0E6"]
 TEXT_COLOR = "#2F2A26"
 
 
 def _style(fig):
     """Apply the shared look to a figure: transparent background and dark text."""
-    fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color=TEXT_COLOR, title_x=0)
+    fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color=TEXT_COLOR, title_x=0, height=380)
     return fig
 
 
@@ -25,6 +25,7 @@ def technology_demand_chart(df):
         color_discrete_sequence=[BAR_COLOR],
     )
     fig.update_yaxes(autorange="reversed")
+    fig.update_xaxes(visible=False)
     return _style(fig)
 
 

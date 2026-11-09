@@ -10,6 +10,7 @@ FILTER_COLUMNS = {
 
 def apply_sidebar_filters(df):
     """Draw the sidebar filters and return the filtered DataFrame."""
+    st.sidebar.header("Filters")
     selections = {}
     for label, column in FILTER_COLUMNS.items():
         options = sorted(df[column].unique())
